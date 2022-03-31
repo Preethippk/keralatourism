@@ -1,0 +1,50 @@
+* {
+    padding: 0px;
+    margin: 0px;
+
+}
+.navbar{
+    height: 125px;
+}
+body{
+    background-color: #dbddf1;
+}
+.gallery{
+    padding: 80 0px;
+    
+}
+img{
+    max-width: 100%;
+   
+}
+.gallery {
+    background: #fff;
+    padding: 15px;
+    width: 100%;
+     box-shadow: 1px 1px 15px rgba(0,0,0,0.3);
+    cursor: pointer; 
+} 
+body{
+    opacity: 0.8;
+}
+
+
+/* body{
+    background-size: cover;
+    height: 650px;
+    width: 100%;
+ background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+} */
+
+.myMargin {
+    margin: 25px;
+} 
+.head{
+    font-weight: bold;
+}
+.h{
+    height: 50px;
+}
