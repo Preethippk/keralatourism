@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.csss">
+    <link rel="stylesheet" href="./CSS/sign.css">
+    <link rel="stylesheet" href="bootstrap.min.css"> 
+   
+    <link rel="stylesheet" type="text/css" href="./sign.css">
+</head>
+
+<body>
+ <form action="login.html" class="form" id="form" on submit="return Validate()"> 
+<div class="container">
+<div class= "header">
+<h2>REGISTRATION FORM</h2>
+</div>
+<form class="form" id="form">
+<div class="form-control">
+<label>Username </label>
+<input type="text" name="" id="username" placeholder= "Enter your fullname" autocomplete="off">
+<i class="fas fa-check-circle"></i>
+<i class= "fas fa-exclamation-circle"></i>
+<small>Error Msg</small>
+</div>
+<div class="form-control">
+<label>Email</label>
+<input type="Email" name="" id="email" placeholder="Enter your Email" autocomplete="off">
+<i class= "fas fa-check-circle"></i>
+<i class= "fas fa-exclamation-circle"></i>
+<small>Error Msg</small>
+</div> 
+
+<div class="form-control">
+<label>Phone Number</label>
+<input type="number" name="" id="phone" placeholder="Enter Your Phone Number" autocomplete="off">
+<i class="fas fa-check-circle"></i>
+<i class= "fas fa-exclamation-circle"></i>
+<small>Error Msg</small>
+</div>
+<div class= "form-control">
+<label>Password</label>
+<input type="Password" name="" id="password" placeholder="Enter Your Password" autocomplete="off">
+<i class= "fas fa-check-circle"></i>
+<i class="fas fa-exclamation-circle"></i>
+<small>Error Msg</small>
+</div>
+<div class= "form-control">
+<label>Confirm Password</label>
+<input type="Password" name="" id= "cpassword" placeholder= "Enter your Password again" autocomplete="off">
+<i class= "fas fa-check-circle"></i>
+<i class="fas fa-exclamation-circle"></i>
+<small>Error Msg</small>
+</div>
+<input type="submit" value="Submit" class="btn" name="">
+
+</form>
+</div>
+<script type="text/javascript">
+const form= document.getElementById('form');    
+const username= document.getElementById('username');
+const password= document.getElementById('password');
+const cpassword= document.getElementById('cpassword');
+const phone= document.getElementById('phone');
+const email= document.getElementById('email');
+
+form.addEventListener('submit',(event) =>{
+   event.preventDefault();
+   validate();
+})
+
+const sendData = (sRate, count) => {
+    if(sRate === count){
+        alert('Registration successful');
+        swal("Good Job!", "Registration successful", "success");
+        location.href ="index.html";
+    }
+
+
+ const successMsg = () => {
+     let formCon =document.getElementsByClassName('form-control');
+     var count = formCon.length-1;
+     for(var i=0;i<formCon.length; i++){
+       if(formCon[i].className === " form-control success"){
+           var sRate = 0+i;
+           console.log(sRate);
+           sendData(count);
+
+       } else {
+           return false;
+       }
+
+     }
+ }
+
+
+
+const isEmail= (emailVal)=>{
+    var atSymbol= emailVal.indexOf("@");
+    if(atSymbol < 1)return false;
+    var dot = emailVal.lastIndexOf('.');
+    if(dot<= atSymbol + 3)return false;
+    if(dot=== emailVal.length-1) return false;
+    return true;
+
+}
+const validate=() =>{
+  
+const usernameVal= username.value.trim();
+const passwordVal= password.value.trim();
+const cpasswordVal= cpassword.value.trim();
+const phoneVal= phone.value.trim();
+const emailVal= email.value.trim();
+if(usernameVal === " "){
+      setErrorMsg(username,'Username cannot be blank');
+  } else if (usernameVal.length <=2){
+      setErrorMsg(username,'Username minimum 3 character');
+  }else{
+       setSucessMsg(username);
+ }
+ if(emailValue === " "){
+      setErrorMsg(email,'email cannot be blank');
+   }
+   else if(!isEmail(emailVal))
+  {
+      setErrorMsg(email,'Not a valid Email');
+    
+ }
+else{
+       setSucessMsg(email);
+  }
+
+  if( phoneVal=== " "){
+    setErrorMsg(Phone,'Phone cannot be blank');
+} else if (phoneVal.length !=10){
+    setErrorMsg(phoneVal,'Not a valid phone number');
+}else{
+     setSucessMsg(phone);
+}
+if(passwordVal === " "){
+   setErrorMsg(password,'Password cannot be blank');
+}
+else{
+    setSucessMsg(password);
+ }
+ if(cpasswordVal === " "){
+ setErrorMsg(cpassword,'Confirm Password cannot be blank');
+}
+else if(passwordVal !== cpasswordVal) {
+  setErrorMsg(cpassword,'Password Does not match');
+ }else{
+    setSucessMsg(cpassword);
+}
+successMsg();
+
+
+}
+  
+  function setErrorMsg(input, errormsgs){
+  const formControl = input.parentElement;
+  const small =  formControl.querySelector('small');
+  formControl.className = "form-control error";
+  small.innerText = errormsgs;
+} 
+function setSuccessMsg(input, errormsgs){
+  const formControl = input.parentElement;
+  formControl.className = "form-control success";
+}
+}
+</script>
+</body>
+</html>
